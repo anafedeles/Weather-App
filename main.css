@@ -1,0 +1,487 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('images/albastru.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: auto;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.container{
+  position: relative;
+  width: 600px;
+  height: 100px;
+  background: rgba(255, 255, 255, .1);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  transition: height .6s ease;
+}
+
+
+  
+
+.search-box {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.search-box i {
+  position: absolute;
+  left: 10px;
+  font-size: 28px;
+}
+
+.search-box input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  outline: none;
+  border-radius: 10px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0 48px 0 42px;
+}
+
+.search-box input::placeholder {
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.search-box button {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 28px;
+  color: #fff;
+  padding: 0 40px 0 5px;
+  cursor: pointer;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none; 
+  z-index:1000001;
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+  color: black;
+  
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.weather-box {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.weather-box,
+.weather-details,
+.not-found {
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.weather-box.active,
+.weather-details.active,
+.not-found.active {
+  visibility: visible;
+}
+
+.weather-box .box,
+.not-found .box {
+  transform: translateY(-100%);
+}
+
+.weather-box.active .box,
+.not-found.active .box {
+  transform: translateY(0%);
+  transition: transform 1s ease;
+  transition-delay: .6s;
+}
+
+.weather-box .box .info-weather {
+  transform: translateY(-120%);
+}
+
+.container.active .weather-box .box .info-weather,
+.container.active .weather-details .humidity .info-humidity,
+.container.active .weather-details .wind .info-wind {
+  transform: translateY(0%);
+  transition: transform 1s ease;
+}
+
+.weather-box img {
+  margin-top: 30px;
+  width: 60%;
+}
+
+.weather-box .temperature {
+  position: relative;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 700;
+ 
+  margin: 10px 0 6px -30px; 
+}
+
+.weather-box .temperature span {
+  position: absolute;
+  font-size: 20px;
+  margin-left: 4px;
+}
+
+.weather-box .description {
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.weather-details {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+}
+
+.weather-details .humidity,
+.weather-details .wind {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  transform: translateY(-100%);
+}
+
+.weather-details.active .humidity,
+.weather-details.active .wind {
+  transform: translateY(0%);
+  transition: transform 1s ease;
+  transition-delay: 1.2s;
+}
+
+.weather-details .humidity .info-humidity,
+.weather-details .wind .info-wind {
+  transform: translateY(-100%);
+  overflow: hidden;
+}
+
+.weather-details .humidity {
+  padding-left: 20px;
+  justify-content: flex-start;
+}
+
+.weather-details .wind {
+  padding-right: 20px;
+  justify-content: flex-end;
+}
+
+.weather-details i {
+  font-size: 56px;
+  margin-right: 10px;
+}
+
+.weather-details span {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.weather-details p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.not-found {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 110px;
+}
+
+.not-found img {
+  width: 40%;
+}
+
+.not-found p {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.city-hide {
+  display: none;
+}
+
+#clone-info-weather,
+#clone-info-humidity,
+#clone-info-wind {
+  position: absolute;
+  transform: translateY(-100%);
+}
+
+#clone-info-weather .weather {
+  transform: translateY(120%);
+  transition: transform 1s ease, opacity 0s;
+  transition-delay: 0s, 2s;
+}
+
+.weather-box:not(.active) #clone-info-weather .weather {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.active-clone#clone-info-weather .weather {
+  transform: translateY(0%);
+}
+
+#clone-info-humidity span,
+#clone-info-wind span {
+  transform: translateY(100%);
+  transition: transform 1s ease;
+}
+
+.active-clone#clone-info-humidity span,
+.active-clone#clone-info-wind span {
+  transform: translateY(0%);
+}
+
+/* pentru vremea pe 4 zile*/
+
+.forecast-container {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  min-height: 300px;
+  display: none;
+  overflow: hidden;
+  width: 600px;
+  z-index: 2;
+
+}
+
+.forecast-container.active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; 
+  justify-content: space-evenly; 
+}
+
+.forecast {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.forecast-card {
+  width: calc(25% - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+
+.forecast-card img {
+  
+  width: 35px;
+  height: 35px;
+  margin-bottom: 5px;
+ 
+}
+
+.forecast-temperature {
+  align-items: center;
+  font-weight: bold;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+/*spinner*/
+
+.loading-spinner {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: none;
+
+  z-index: 1000;
+}
+
+
+.loading-spinner::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 15px auto;
+  border-radius: 50%;
+  border: 5px solid #3498db; 
+  border-top: 5px solid transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*favourites*/
+.favorite-list, .heart-button {
+  display: none;
+}
+
+.heart-button {
+  position: absolute;
+  top: 0px; 
+  right: -43px;
+  width: 180px;
+  height: 40%;
+  margin-top: 5px; 
+  font-size: 40px;
+  background-color: transparent; 
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  cursor: pointer;
+}
+
+.heart-button i:hover {
+  color: red;
+}
+
+
+
+.heart-button i {
+  color: rgb(255, 253, 253); 
+  margin-right: 5px;
+}
+
+.favorite-container {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  min-height: 100px; 
+  display: none;
+  overflow: hidden;
+  width: 600px;
+
+}
+
+.favorite-container.active {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative; 
+  
+}
+
+
+.favorite-section {
+  position: relative;
+  width: 100%;
+  margin-top: 10px; 
+}
+
+.favorite-section h2 {
+  font-size: 1em;
+  margin-bottom: 5px;
+ 
+}
+
+.favorite-list {
+  list-style-type: disc;
+  padding: 0;
+  max-height: 100px; 
+  overflow-y: auto;
+
+}
+
+.favorite-list li {
+  margin-bottom: 5px;
+  padding: 8px;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.favorite-list li:hover {
+  background-color: #e0e0e0;
+}
