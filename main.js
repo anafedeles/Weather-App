@@ -17,7 +17,7 @@ favoriteContainer.style.display = 'none';
 
 
 async function fetchCitySuggestions(query) {
-    const apiKey = '15f1673625f743659e97c6cbb47427e7';
+    const apiKey = '';
     try{
     const response = await fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&apiKey=${apiKey}`);
     const data = await response.json();
@@ -29,7 +29,7 @@ async function fetchCitySuggestions(query) {
 }
 
 async function fetchForecast(city) {
-    const apiKey = 'c11b568515e39132ec55de719c3809f5';
+    const apiKey = '';
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`);
     const data = await response.json();
     console.log('Forecast API response:', data);
@@ -194,7 +194,7 @@ async function handleCitySearch() {
         const suggestions = await fetchCitySuggestions(city);
         displaySuggestions(suggestions);
 
-        const APIKey = 'c11b568515e39132ec55de719c3809f5';
+        const APIKey = '';
         const cityValue = document.querySelector('.search-box input').value;
         await setBackgroundImage(cityValue);
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&appid=${APIKey}`);
